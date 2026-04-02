@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frutería Los Huertos | Frutas y Verduras Frescas en Logroño</title>
+    <meta name="description" content="Frutería Los Huertos en Logroño desde 1998. Frutas y verduras frescas diarias, productos locales de La Rioja y servicio a domicilio. Calidad garantizada.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5016;
+            --light-green: #4a7c23;
+            --accent-orange: #e67e22;
+            --fresh-yellow: #f1c40f;
+            --cream: #faf8f3;
+            --dark: #1a1a1a;
+            --text-gray: #555;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 3px solid var(--primary-green);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            display: block;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-green);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.8), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-green);
+        }
+
+        /* Features Bar */
+        .features-bar {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-text p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            margin: 0 -2rem;
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid var(--accent-orange);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-orange);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .product-origin {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--light-green);
+            font-weight: 500;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            margin: 0 -2rem;
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .testimonials .section-header h2 {
+            color: white;
+        }
+
+        .testimonials .section-header h2::after {
+            background: var(--fresh-yellow);
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .testimonial-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .testimonial-meta h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .stars {
+            color: var(--fresh-yellow);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+            margin: 0 -2rem;
+            padding: 5rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--cream);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: var(--accent-orange);
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 100%;
+            min-height: 400px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--light-green);
+            transform: translateY(-2px);
+        }
+
+        /* Instagram Feed */
+        .instagram {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .instagram-handle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .instagram-handle:hover {
+            color: var(--accent-orange);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .instagram-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--fresh-yellow);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--fresh-yellow);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+        }
+
+        /* Floating Elements */
+        .floating-fruit {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -100px) rotate(90deg); }
+            50% { transform: translate(0, -200px) rotate(180deg); }
+            75% { transform: translate(-100px, -100px) rotate(270deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 200px);
+            }
+
+            .gallery-item.large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 200px);
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-fruit" style="top: 10%; left: 5%;">🍎</div>
+    <div class="floating-fruit" style="top: 30%; right: 10%; animation-delay: 5s;">🥕</div>
+    <div class="floating-fruit" style="top: 60%; left: 8%; animation-delay: 10s;">🍊</div>
+    <div class="floating-fruit" style="bottom: 20%; right: 5%; animation-delay: 15s;">🥬</div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://kimi-web-img.moonshot.cn/img/electres.es/3e57f6bb3c76906d0a931b763a4e437797f45800.jpg" alt="Logo Frutería Los Huertos">
+                <div class="logo-text">
+                    <h1>Los Huertos</h1>
+                    <span>Frutas y Verduras</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="hero-badge">Desde 1998</span>
+            <h2>De la Huerta a Tu Mesa</h2>
+            <p>Frutas y verduras frescas cada día en el corazón de Logroño. Productos locales de La Rioja, calidad garantizada y el mejor trato personal.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">📍 Visítanos</a>
+                <a href="tel:941211732" class="btn btn-secondary">📞 941 21 17 32</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <div class="features-bar">
+        <div class="features-container">
+            <div class="feature-item">
+                <div class="feature-icon">🌿</div>
+                <div class="feature-text">
+                    <h4>Productos Propios</h4>
+                    <p>De nuestra huerta a tu mesa</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <div class="feature-text">
+                    <h4>Servicio a Domicilio</h4>
+                    <p>Te llevamos la frescura a casa</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <div class="feature-text">
+                    <h4>Verdura Limpia</h4>
+                    <p>Preparada y envasada al vacío</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-text">
+                    <h4>Marcas Premium</h4>
+                    <p>Las mejores del mercado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <div class="about-container">
+            <div class="about-image fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/electres.es/3e57f6bb3c76906d0a931b763a4e437797f45800.jpg" alt="Frutería Los Huertos - Fachada del establecimiento en Calle Valcuerna 8, Logroño">
+            </div>
+            <div class="about-content fade-in">
+                <h3>Más de 25 Años de Frescura</h3>
+                <p>Frutería Los Huertos nació en 1998 con una misión clara: llevar lo mejor de la huerta riojana a las mesas de Logroño. Ubicados en el corazón de la ciudad, en la Calle Valcuerna 8, somos tu frutería de confianza donde la calidad y el trato personal son nuestra seña de identidad.</p>
+                <p>Trabajamos cada día para ofrecerte frutas y verduras de primera calidad, seleccionando cuidadosamente productos locales de La Rioja como la pera de Rincón de Soto, el pimiento najerano y las mejores manzanas de la zona, junto con frutas tropicales y productos de temporada.</p>
+                <p>Nuestro compromiso es simple: frescura garantizada, precios justos y un servicio que te hará sentir como en casa.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <h4>25+</h4>
+                        <p>Años de experiencia</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>1.792</h4>
+                        <p>Seguidores en Instagram</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <p>Producto fresco diario</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos">
+        <div class="section-header fade-in">
+            <h2>Nuestros Productos</h2>
+            <p>Seleccionamos cada día lo mejor de la temporada para ti. Productos locales de La Rioja y las mejores frutas del mercado.</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/9095cb2fabfe446783e457878dfc70c3cb65e28a.jpg" alt="Frutas frescas de temporada">
+                    <span class="product-badge">Temporada</span>
+                </div>
+                <div class="product-info">
+                    <h3>Frutas Frescas</h3>
+                    <p>Manzanas Golden y Fuji, peras de Rincón de Soto, uvas de la vendimia riojana, naranjas, plátanos y frutas tropicales seleccionadas.</p>
+                    <div class="product-origin">
+                        <span>🌱</span>
+                        <span>Productos de La Rioja y nacional</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/assets.zyrosite.com/794cfd1c2cca53b86051618809e373c658997e63.jpg" alt="Verduras frescas de La Rioja">
+                    <span class="product-badge">IGP</span>
+                </div>
+                <div class="product-info">
+                    <h3>Verduras de la Rioja</h3>
+                    <p>Pimientos najeranos con Indicación Geográfica Protegida, tomates que saben a tomate, calabacines, berenjenas y hortalizas de temporada.</p>
+                    <div class="product-origin">
+                        <span>🏆</span>
+                        <span>IGP Pimiento Riojano</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.frutascarlos.com/da00a9c7bf332e89af4486f4b31cf87346f94592.jpg" alt="Mostrador de frutas y verduras">
+                    <span class="product-badge">Servicio</span>
+                </div>
+                <div class="product-info">
+                    <h3>Preparados y Envasados</h3>
+                    <p>Verdura limpia, cortada y envasada al vacío para tu comodidad. Ensaladas preparadas, fruta cortada y bandejas listas para consumir.</p>
+                    <div class="product-origin">
+                        <span>✨</span>
+                        <span>Comodidad sin perder frescura</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/4efa4415160a522a3aa41abb91d904e786530791.jpg" alt="Frutas tropicales exóticas">
+                    <span class="product-badge">Exótico</span>
+                </div>
+                <div class="product-info">
+                    <h3>Frutas Tropicales</h3>
+                    <p>Piñas, aguacates, mangos, papayas, fruta de la pasión y kiwis. Lo mejor del clima tropical seleccionado para tu mesa.</p>
+                    <div class="product-origin">
+                        <span> tropical</span>
+                        <span>Importación directa</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/comefruta.es/a9dbccc8ab617fccf5b63c222e7085bc0275bf58.jpg" alt="Productos gourmet y ecológicos">
+                    <span class="product-badge">Premium</span>
+                </div>
+                <div class="product-info">
+                    <h3>Productos Gourmet</h3>
+                    <p>Selección de productos ecológicos, huevos camperos de gallinas en libertad, miel local y conservas artesanales de la zona.</p>
+                    <div class="product-origin">
+                        <span>🍯</span>
+                        <span>Productos de proximidad</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/53b92875a92fd3d6eb85bd56ef00ed64bfb9c069.jpg" alt="Cestas de frutas y verduras">
+                    <span class="product-badge">Personalizado</span>
+                </div>
+                <div class="product-info">
+                    <h3>Cestas Personalizadas</h3>
+                    <p>Diseñamos tu cesta a medida con lo mejor de la temporada. Perfectas para regalo o para tu consumo semanal. Pide la tuya.</p>
+                    <div class="product-origin">
+                        <span>🎁</span>
+                        <span>A tu gusto y presupuesto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header fade-in">
+            <h2>Lo Que Dicen Nuestros Clientes</h2>
+            <p>La confianza de nuestros vecinos es nuestro mejor aval. Más de 25 años sirviendo a Logroño.</p>
+        </div>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">C</div>
+                    <div class="testimonial-meta">
+                        <h4>Carmen Abad</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Calidad de primera en frutas y verduras a buen precio. Trato excelente. Posibilidad de comprar la verdura limpia y envasada al vacío. Una frutería de 10."</p>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">M</div>
+                    <div class="testimonial-meta">
+                        <h4>María García</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Llevo comprando aquí más de 15 años. Siempre frescura, siempre buen trato. Los pimientos najeranos son los mejores de Logroño. Totalmente recomendable."</p>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">J</div>
+                    <div class="testimonial-meta">
+                        <h4>Javier Martínez</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"El servicio a domicilio es fantástico. Me traen la fruta y verdura fresca cada semana a casa. Productos de La Rioja de primera calidad. Son de confianza."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="galeria">
+        <div class="section-header fade-in">
+            <h2>Nuestra Tienda</h2>
+            <p>Un vistazo a nuestro establecimiento en Calle Valcuerna 8, Logroño.</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item large fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/electres.es/3e57f6bb3c76906d0a931b763a4e437797f45800.jpg" alt="Fachada Frutería Los Huertos Logroño">
+                <div class="gallery-overlay">
+                    <h4>Nuestra Fachada</h4>
+                    <p>Calle Valcuerna 8, Logroño</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/9095cb2fabfe446783e457878dfc70c3cb65e28a.jpg" alt="Mostrador de frutas frescas">
+                <div class="gallery-overlay">
+                    <h4>Mostrador</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/23a795d526fce9bbecad2e980cea81d75711226a.jpg" alt="Frutas frescas expuestas">
+                <div class="gallery-overlay">
+                    <h4>Fruta de Temporada</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.frutascarlos.com/da00a9c7bf332e89af4486f4b31cf87346f94592.jpg" alt="Verduras frescas display">
+                <div class="gallery-overlay">
+                    <h4>Verduras</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/4efa4415160a522a3aa41abb91d904e786530791.jpg" alt="Frutas tropicales">
+                <div class="gallery-overlay">
+                    <h4>Exóticos</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram">
+        <a href="https://instagram.com/fruterialoshuertos" target="_blank" class="instagram-handle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @fruterialoshuertos
+        </a>
+        <p style="color: var(--text-gray); margin-bottom: 2rem;">Síguenos para ver nuestros productos frescos cada día</p>
+        
+        <div class="instagram-grid">
+            <div class="instagram-item">
+                <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/9095cb2fabfe446783e457878dfc70c3cb65e28a.jpg" alt="Instagram 1">
+                <div class="instagram-overlay">
+                    <span>❤️</span>
+                </div>
+            </div>
+            <div class="instagram-item">
+                <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/4efa4415160a522a3aa41abb91d904e786530791.jpg" alt="Instagram 2">
+                <div class="instagram-overlay">
+                    <span>❤️</span>
+                </div>
+            </div>
+            <div class="instagram-item">
+                <img src="https://kimi-web-img.moonshot.cn/img/assets.zyrosite.com/794cfd1c2cca53b86051618809e373c658997e63.jpg" alt="Instagram 3">
+                <div class="instagram-overlay">
+                    <span>❤️</span>
+                </div>
+            </div>
+            <div class="instagram-item">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.frutascarlos.com/da00a9c7bf332e89af4486f4b31cf87346f94592.jpg" alt="Instagram 4">
+                <div class="instagram-overlay">
+                    <span>❤️</span>
+                </div>
+            </div>
+            <div class="instagram-item">
+                <img src="https://kimi-web-img.moonshot.cn/img/previews.123rf.com/23a795d526fce9bbecad2e980cea81d75711226a.jpg" alt="Instagram 5">
+                <div class="instagram-overlay">
+                    <span>❤️</span>
+                </div>
+            </div>
+            <div class="instagram-item">
+                <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/53b92875a92fd3d6eb85bd56ef00ed64bfb9c069.jpg" alt="Instagram 6">
+                <div class="instagram-overlay">
+                    <span>❤️</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h3>Visítanos en Logroño</h3>
+                <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.8;">Estamos en el centro de Logroño, en la Calle Valcuerna. Ven a conocernos y descubre la frescura de nuestros productos. ¡Te esperamos!</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h4>Dirección</h4>
+                            <p>Calle Valcuerna, 8<br>26005 Logroño, La Rioja</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>Teléfono</h4>
+                            <a href="tel:941211732">941 21 17 32</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-text">
+                            <h4>Horario</h4>
+                            <p>Lunes a Sábado<br>08:00 - 14:00 | 17:00 - 20:30<br>Domingo cerrado</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:info@fruterialoshuertos.com">info@fruterialoshuertos.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: var(--cream); padding: 1.5rem; border-radius: 15px; margin-top: 2rem;">
+                    <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">🚚 Servicio a Domicilio</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-gray);">Consulta condiciones para pedidos a domicilio en Logroño. Te llevamos la frescura a tu casa.</p>
+                </div>
+            </div>
+            
+            <div class="map-container fade-in">
+                <div class="map-placeholder">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">¿Cómo llegar?</h3>
+                    <p style="margin-bottom: 1rem;">Calle Valcuerna, 8, 26005 Logroño</p>
+                    <a href="https://maps.google.com/?q=Calle+Valcuerna+8+Logroño" target="_blank" class="map-btn">Abrir en Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Los Huertos</h3>
+                <p>Tu frutería de confianza en Logroño desde 1998. Especialistas en frutas y verduras frescas, productos locales de La Rioja y servicio personalizado.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/fruterialoshuertos" target="_blank" title="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com/fruterialoshuertos" target="_blank" title="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/34941211732" target="_blank" title="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#productos">Frutas Frescas</a></li>
+                    <li><a href="#productos">Verduras de La Rioja</a></li>
+                    <li><a href="#productos">Productos Ecológicos</a></li>
+                    <li><a href="#productos">Cestas Personalizadas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Frutería Los Huertos. Todos los derechos reservados.</p>
+            <p>Hecho con ❤️ en Logroño, La Rioja</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
